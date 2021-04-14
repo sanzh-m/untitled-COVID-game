@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Frog : Enemy
+public class MovingEnemy : Enemy
 {
 
     [SerializeField] private float leftCap;
 
     [SerializeField] private float rightCap;
 
-    [SerializeField] private float jumpLength;
+    [SerializeField] private float moveLength;
 
     [SerializeField] private float jumpHeight;
 
@@ -20,7 +20,7 @@ public class Frog : Enemy
 
 
 
-    private bool facingLeft = true;
+    private bool facingLeft = false;
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -31,42 +31,35 @@ public class Frog : Enemy
     // Update is called once per frame
     void Update()
     {
-        // Move();
-        if (anim.GetBool("Jumping"))
+       
+        if (anim.GetBool("Walking"))
         {
-            if (rb.velocity.y < .1f)
+            if (Mathf.Abs(rb.velocity.x) < .05f)
             {
-                anim.SetBool("Falling", true);
-                anim.SetBool("Jumping", false);
+                anim.SetBool("Walking", false);
+                anim.SetBool("Idle", true);
+                
             }
-        }
-
-        else if (anim.GetBool("Falling") && coll.IsTouchingLayers(ground))
-        {
-            anim.SetBool("Falling", false);
         }
     }
 
 
     private void Move() 
     {
-
         if (facingLeft)
         {
             if (transform.position.x > leftCap)
             {
 
-                // Make sure sprite is facing right location, and if not, face right direction
-                // but only if enemy is on the ground
-                if (transform.localScale.x != 1 && coll.IsTouchingLayers(ground))
+                if (transform.localScale.x != -1 && coll.IsTouchingLayers(ground))
                 {
-                    transform.localScale = new Vector3(1, 1);
+                    transform.localScale = new Vector3(-1, 1);
                 }
-                // Jump if touching layer
                 if (coll.IsTouchingLayers(ground))
                 {
-                    rb.velocity = new Vector2(-jumpLength, jumpHeight);
-                    anim.SetBool("Jumping", true);
+                    rb.velocity = new Vector2(-moveLength, 0);
+                    anim.SetBool("Walking", true);
+                    
 
                 }
             }
@@ -77,17 +70,18 @@ public class Frog : Enemy
         }
         else 
         {
+
             if (transform.position.x < rightCap)
             {
-                if (transform.localScale.x != -1 && coll.IsTouchingLayers(ground))
+                if (transform.localScale.x != 1 && coll.IsTouchingLayers(ground))
                 {
-                    transform.localScale = new Vector3(-1, 1);
+                    transform.localScale = new Vector3(1, 1);
                 }
 
                 if (coll.IsTouchingLayers(ground))
                 {
-                    rb.velocity = new Vector2(jumpLength, jumpHeight);
-                    anim.SetBool("Jumping", true);
+                    rb.velocity = new Vector2(moveLength, 0);
+                    anim.SetBool("Walking", true);
                 }
             }
             else
