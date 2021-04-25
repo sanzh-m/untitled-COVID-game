@@ -11,6 +11,14 @@ public class Fall : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        } else if (collision.gameObject.tag == "Enemy")
+        {
+            Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+            enemy.KillEnemy();
+        } else if (collision.gameObject.tag == "IndestructibleEnemy")
+        {
+            IndestructibleEnemy enemy = collision.gameObject.GetComponent<IndestructibleEnemy>();
+            enemy.KillEnemy();
         }
     }
     // Start is called before the first frame update
