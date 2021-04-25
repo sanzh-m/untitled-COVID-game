@@ -29,6 +29,15 @@ public class Enemy : MonoBehaviour
 
     }
 
+    public void KillEnemy()
+    {
+        anim.SetTrigger("Death");
+        explosion.Play();
+        rb.velocity = Vector2.zero;
+        rb.bodyType = RigidbodyType2D.Static;
+        GetComponent<Collider2D>().enabled = false;
+    }
+
     private void Death()
     {
         Destroy(this.gameObject);

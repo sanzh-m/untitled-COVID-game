@@ -102,6 +102,21 @@ public class PlayerController : MonoBehaviour
                     rb.velocity = new Vector2(hurtForce, rb.velocity.y);
                 }
             }
+        } else if (other.gameObject.tag == "IndestructibleEnemy")
+        {
+            IndestructibleEnemy enemy = other.gameObject.GetComponent<IndestructibleEnemy>();
+            state = State.hurt;
+            HandleHealth();
+            if (other.gameObject.transform.position.x > transform.position.x)
+            {
+                //Enemy is to my right -> damaged and shift left
+                rb.velocity = new Vector2(-hurtForce, rb.velocity.y);
+            }
+            else
+            {
+                //Enemy is to my left -> damaged and shift right
+                rb.velocity = new Vector2(hurtForce, rb.velocity.y);
+            }
         }   
     }
 
