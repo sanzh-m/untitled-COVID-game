@@ -7,8 +7,8 @@ public class SmartEnemy : IndestructibleEnemy
 {
 
     public Transform target;
-    public float speed = 200f;
-    public float nextWaypointDistance = 3f;
+    public float speed = 300f;
+    public float nextWaypointDistance = .5f;
 
     Path path;
     int currentWaypoint = 0;
@@ -17,16 +17,20 @@ public class SmartEnemy : IndestructibleEnemy
 
     Seeker seeker;
     private Collider2D coll;
+    private bool facingLeft;
+    private Transform transform;
 
-    private bool facingLeft = false;
     // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
         coll = GetComponent<Collider2D>();
         seeker = GetComponent<Seeker>();
+        transform = GetComponent<Transform>();
+        if (transform.localScale.x >= 0f) facingLeft = false;
+        else facingLeft = true;
 
-        InvokeRepeating("CalcPath", 0f, .5f);
+        InvokeRepeating("CalcPath", 0f, .05f);
     }
 
     void CalcPath()
@@ -34,6 +38,8 @@ public class SmartEnemy : IndestructibleEnemy
         if (!discoveredTarget && Vector2.Angle((Vector2)target.position - rb.position, facingLeft ? Vector2.left : Vector2.right) < 45 && ((Vector2)target.position - rb.position).magnitude < 5)
         {
             discoveredTarget = true;
+            anim.SetBool("Idle", false);
+            anim.SetBool("Walking", true);
         }
         else if (discoveredTarget && seeker.IsDone()) {
             seeker.StartPath(rb.position, target.position, OnPathComplete);
@@ -61,6 +67,11 @@ public class SmartEnemy : IndestructibleEnemy
         Vector2 force = direction * speed * Time.deltaTime;
 
         rb.AddForce(force);
+
+        if ((force.x >= 0.01f && transform.localScale.x <= -0.01f) || (force.x <= -0.01f && transform.localScale.x >= 0.01f))
+        {
+            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+        }
 
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
 
