@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{733ce5db-645e-ef55-9e88-6c47a9a49bf7}</ProjectGuid>
+    <ProjectGuid>{8b8c4bc9-04c3-7094-e5ae-9c726ea1152a}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -37,14 +37,20 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Fall.cs" />
+     <Compile Include="Assets\Scripts\SmartEnemy.cs" />
      <Compile Include="Assets\Scripts\GravityHelper.cs" />
+     <Compile Include="Assets\CyberPunk\Scripts\Perspective2DSortMode.cs" />
      <Compile Include="Assets\Scripts\Enemy.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
+     <Compile Include="Assets\Scripts\IndestructibleEnemy.cs" />
+     <Compile Include="Assets\Scripts\MovingEnemy.cs" />
      <Compile Include="Assets\Scripts\Frog.cs" />
+     <Compile Include="Assets\Scripts\Ladder.cs" />
      <Compile Include="Assets\Scripts\Eagle.cs" />
      <Compile Include="Assets\Scripts\SceneChange.cs" />
-     <Compile Include="Assets\Scripts\Ladder.cs" />
-     <None Include="Assets\explosionsoundslite\readme.txt" />
+     <Compile Include="Assets\CyberPunk\Scripts\Done_BGScroller.cs" />
+     <Compile Include="Assets\Scripts\CovidIndesctructible.cs" />
+     <None Include="Assets\SoundBank\explosionsoundslite\readme.txt" />
     <Reference Include="UnityEngine">
         <HintPath>/Applications/Unity/Hub/Editor/2020.2.2f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
@@ -266,6 +272,9 @@
     </Reference>
     <Reference Include="UnityEditor.UnityConnectModule">
         <HintPath>/Applications/Unity/Hub/Editor/2020.2.2f1/Unity.app/Contents/Managed/UnityEngine/UnityEditor.UnityConnectModule.dll</HintPath>
+    </Reference>
+    <Reference Include="Pathfinding.Ionic.Zip.Reduced">
+        <HintPath>/Users/igor/Desktop/COMP3329/Group Project/untitled-COVID-game-master/Assets/AstarPathfindingProject/Plugins/DotNetZip/Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
         <HintPath>/Applications/Unity/Hub/Editor/2020.2.2f1/Unity.app/Contents/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
@@ -613,100 +622,112 @@
         <HintPath>/Applications/Unity/Hub/Editor/2020.2.2f1/Unity.app/Contents/NetStandard/compat/2.0.0/shims/netfx/mscorlib.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Animation.Editor">
-        <HintPath>/Users/igor/Unity/DemoProject/Library/ScriptAssemblies/Unity.2D.Animation.Editor.dll</HintPath>
+        <HintPath>/Users/igor/Desktop/COMP3329/Group Project/untitled-COVID-game-master/Library/ScriptAssemblies/Unity.2D.Animation.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.InternalAPIEngineBridge.001">
-        <HintPath>/Users/igor/Unity/DemoProject/Library/ScriptAssemblies/Unity.InternalAPIEngineBridge.001.dll</HintPath>
+        <HintPath>/Users/igor/Desktop/COMP3329/Group Project/untitled-COVID-game-master/Library/ScriptAssemblies/Unity.InternalAPIEngineBridge.001.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-        <HintPath>/Users/igor/Unity/DemoProject/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+        <HintPath>/Users/igor/Desktop/COMP3329/Group Project/untitled-COVID-game-master/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.PixelPerfect">
-        <HintPath>/Users/igor/Unity/DemoProject/Library/ScriptAssemblies/Unity.2D.PixelPerfect.dll</HintPath>
+        <HintPath>/Users/igor/Desktop/COMP3329/Group Project/untitled-COVID-game-master/Library/ScriptAssemblies/Unity.2D.PixelPerfect.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Tilemap.Editor">
-        <HintPath>/Users/igor/Unity/DemoProject/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
+        <HintPath>/Users/igor/Desktop/COMP3329/Group Project/untitled-COVID-game-master/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
     </Reference>
     <Reference Include="PsdPlugin">
-        <HintPath>/Users/igor/Unity/DemoProject/Library/ScriptAssemblies/PsdPlugin.dll</HintPath>
+        <HintPath>/Users/igor/Desktop/COMP3329/Group Project/untitled-COVID-game-master/Library/ScriptAssemblies/PsdPlugin.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-        <HintPath>/Users/igor/Unity/DemoProject/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+        <HintPath>/Users/igor/Desktop/COMP3329/Group Project/untitled-COVID-game-master/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualStudio.Editor">
-        <HintPath>/Users/igor/Unity/DemoProject/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
+        <HintPath>/Users/igor/Desktop/COMP3329/Group Project/untitled-COVID-game-master/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-        <HintPath>/Users/igor/Unity/DemoProject/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+        <HintPath>/Users/igor/Desktop/COMP3329/Group Project/untitled-COVID-game-master/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-        <HintPath>/Users/igor/Unity/DemoProject/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+        <HintPath>/Users/igor/Desktop/COMP3329/Group Project/untitled-COVID-game-master/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.IK.Editor">
-        <HintPath>/Users/igor/Unity/DemoProject/Library/ScriptAssemblies/Unity.2D.IK.Editor.dll</HintPath>
+        <HintPath>/Users/igor/Desktop/COMP3329/Group Project/untitled-COVID-game-master/Library/ScriptAssemblies/Unity.2D.IK.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Sprite.Editor">
-        <HintPath>/Users/igor/Unity/DemoProject/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+        <HintPath>/Users/igor/Desktop/COMP3329/Group Project/untitled-COVID-game-master/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Psdimporter.Editor">
-        <HintPath>/Users/igor/Unity/DemoProject/Library/ScriptAssemblies/Unity.2D.Psdimporter.Editor.dll</HintPath>
+        <HintPath>/Users/igor/Desktop/COMP3329/Group Project/untitled-COVID-game-master/Library/ScriptAssemblies/Unity.2D.Psdimporter.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Path.Editor">
-        <HintPath>/Users/igor/Unity/DemoProject/Library/ScriptAssemblies/Unity.2D.Path.Editor.dll</HintPath>
+        <HintPath>/Users/igor/Desktop/COMP3329/Group Project/untitled-COVID-game-master/Library/ScriptAssemblies/Unity.2D.Path.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.InternalAPIEditorBridge.001">
-        <HintPath>/Users/igor/Unity/DemoProject/Library/ScriptAssemblies/Unity.InternalAPIEditorBridge.001.dll</HintPath>
+        <HintPath>/Users/igor/Desktop/COMP3329/Group Project/untitled-COVID-game-master/Library/ScriptAssemblies/Unity.InternalAPIEditorBridge.001.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-        <HintPath>/Users/igor/Unity/DemoProject/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+        <HintPath>/Users/igor/Desktop/COMP3329/Group Project/untitled-COVID-game-master/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-        <HintPath>/Users/igor/Unity/DemoProject/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+        <HintPath>/Users/igor/Desktop/COMP3329/Group Project/untitled-COVID-game-master/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-        <HintPath>/Users/igor/Unity/DemoProject/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+        <HintPath>/Users/igor/Desktop/COMP3329/Group Project/untitled-COVID-game-master/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Mathematics">
-        <HintPath>/Users/igor/Unity/DemoProject/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
+        <HintPath>/Users/igor/Desktop/COMP3329/Group Project/untitled-COVID-game-master/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.IK.Runtime">
-        <HintPath>/Users/igor/Unity/DemoProject/Library/ScriptAssemblies/Unity.2D.IK.Runtime.dll</HintPath>
+        <HintPath>/Users/igor/Desktop/COMP3329/Group Project/untitled-COVID-game-master/Library/ScriptAssemblies/Unity.2D.IK.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Cinemachine">
-        <HintPath>/Users/igor/Unity/DemoProject/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
+        <HintPath>/Users/igor/Desktop/COMP3329/Group Project/untitled-COVID-game-master/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
     </Reference>
     <Reference Include="com.unity.cinemachine.editor">
-        <HintPath>/Users/igor/Unity/DemoProject/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
+        <HintPath>/Users/igor/Desktop/COMP3329/Group Project/untitled-COVID-game-master/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Animation.Triangle.Runtime">
-        <HintPath>/Users/igor/Unity/DemoProject/Library/ScriptAssemblies/Unity.2D.Animation.Triangle.Runtime.dll</HintPath>
+        <HintPath>/Users/igor/Desktop/COMP3329/Group Project/untitled-COVID-game-master/Library/ScriptAssemblies/Unity.2D.Animation.Triangle.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Animation.Runtime">
-        <HintPath>/Users/igor/Unity/DemoProject/Library/ScriptAssemblies/Unity.2D.Animation.Runtime.dll</HintPath>
+        <HintPath>/Users/igor/Desktop/COMP3329/Group Project/untitled-COVID-game-master/Library/ScriptAssemblies/Unity.2D.Animation.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.PixelPerfect.Editor">
-        <HintPath>/Users/igor/Unity/DemoProject/Library/ScriptAssemblies/Unity.2D.PixelPerfect.Editor.dll</HintPath>
+        <HintPath>/Users/igor/Desktop/COMP3329/Group Project/untitled-COVID-game-master/Library/ScriptAssemblies/Unity.2D.PixelPerfect.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
-        <HintPath>/Users/igor/Unity/DemoProject/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+        <HintPath>/Users/igor/Desktop/COMP3329/Group Project/untitled-COVID-game-master/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Mathematics.Editor">
-        <HintPath>/Users/igor/Unity/DemoProject/Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
+        <HintPath>/Users/igor/Desktop/COMP3329/Group Project/untitled-COVID-game-master/Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Common.Runtime">
-        <HintPath>/Users/igor/Unity/DemoProject/Library/ScriptAssemblies/Unity.2D.Common.Runtime.dll</HintPath>
+        <HintPath>/Users/igor/Desktop/COMP3329/Group Project/untitled-COVID-game-master/Library/ScriptAssemblies/Unity.2D.Common.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.SpriteShape.Editor">
-        <HintPath>/Users/igor/Unity/DemoProject/Library/ScriptAssemblies/Unity.2D.SpriteShape.Editor.dll</HintPath>
+        <HintPath>/Users/igor/Desktop/COMP3329/Group Project/untitled-COVID-game-master/Library/ScriptAssemblies/Unity.2D.SpriteShape.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Common.Editor">
-        <HintPath>/Users/igor/Unity/DemoProject/Library/ScriptAssemblies/Unity.2D.Common.Editor.dll</HintPath>
+        <HintPath>/Users/igor/Desktop/COMP3329/Group Project/untitled-COVID-game-master/Library/ScriptAssemblies/Unity.2D.Common.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.SpriteShape.Runtime">
-        <HintPath>/Users/igor/Unity/DemoProject/Library/ScriptAssemblies/Unity.2D.SpriteShape.Runtime.dll</HintPath>
+        <HintPath>/Users/igor/Desktop/COMP3329/Group Project/untitled-COVID-game-master/Library/ScriptAssemblies/Unity.2D.SpriteShape.Runtime.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="PackageToolsEditor.csproj">
+      <Project>{e2615d09-54fe-a82e-1e80-945a8e78db08}</Project>
+      <Name>PackageToolsEditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="AstarPathfindingProject.csproj">
+      <Project>{00659c3c-ba18-2680-b7f2-f6aa3da51268}</Project>
+      <Name>AstarPathfindingProject</Name>
+    </ProjectReference>
+    <ProjectReference Include="AstarPathfindingProjectEditor.csproj">
+      <Project>{81da741e-6fa0-b7d3-72d1-ab0b67cb7436}</Project>
+      <Name>AstarPathfindingProjectEditor</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

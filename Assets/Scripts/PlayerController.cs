@@ -81,9 +81,22 @@ public class PlayerController : MonoBehaviour
             if (state == State.falling)
             {
                 // Destroy(other.gameObject);
-                enemy.JumpedOn();
-
-                Jump();
+                bool result = enemy.JumpedOn();
+                if (result) {
+                    Jump();
+                } else {
+                HandleHealth();
+                if (other.gameObject.transform.position.x > transform.position.x)
+                {
+                    //Enemy is to my right -> damaged and shift left
+                    rb.velocity = new Vector2(-hurtForce, rb.velocity.y);
+                }
+                else
+                {
+                    //Enemy is to my left -> damaged and shift right
+                    rb.velocity = new Vector2(hurtForce, rb.velocity.y);
+                }
+                }
             } 
             
             else 
