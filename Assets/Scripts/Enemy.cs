@@ -18,13 +18,14 @@ public class Enemy : MonoBehaviour
         explosion = GetComponent<AudioSource>();
     }
     // Start is called before the first frame update
-    public void JumpedOn() 
+    public virtual bool JumpedOn() 
     {
         anim.SetTrigger("Death");
         explosion.Play();
         rb.velocity = Vector2.zero;
         rb.bodyType = RigidbodyType2D.Static;
         GetComponent<Collider2D>().enabled = false;
+        return true;
         
 
     }
