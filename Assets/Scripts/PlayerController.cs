@@ -130,7 +130,10 @@ public class PlayerController : MonoBehaviour
                 //Enemy is to my left -> damaged and shift right
                 rb.velocity = new Vector2(hurtForce, rb.velocity.y);
             }
-        }   
+        } else if (other.gameObject.tag == "Virus")
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 
     private void HandleHealth()
