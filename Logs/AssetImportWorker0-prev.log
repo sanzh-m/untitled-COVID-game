@@ -1,37 +1,43 @@
 Using pre-set license
-Built from '2020.2/release' branch; Version is '2020.2.2f1 (068178b99f32) revision 426360'; Using compiler version '192528614'; Build Type 'Release'
-OS: 'Windows 10 Home Single Language; OS build 19041.928; Version 2004; 64bit' Language: 'ru' Physical Memory: 3980 MB
-BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
 
  COMMAND LINE ARGUMENTS:
-C:\Users\asus\Desktop\current_courses\game_design\unity_editors\2020.2.2f1\Editor\Unity.exe
+/Applications/Unity/Hub/Editor/2020.2.2f1/Unity.app/Contents/MacOS/Unity
 -adb2
 -batchMode
 -noUpm
 -name
 AssetImportWorker0
 -projectPath
-C:/Users/asus/Desktop/check/untitled-COVID-game
+/Users/igor/Desktop/COMP3329/Group Project/untitled-COVID-game-master
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
+<<<<<<< HEAD
 51538
 Successfully changed project path to: C:/Users/asus/Desktop/check/untitled-COVID-game
 C:/Users/asus/Desktop/check/untitled-COVID-game
 Using Asset Import Pipeline V2.
 Refreshing native plugins compatible for Editor in 128.32 ms, found 1 plugins.
+=======
+51517
+Successfully changed project path to: /Users/igor/Desktop/COMP3329/Group Project/untitled-COVID-game-master
+/Users/igor/Desktop/COMP3329/Group Project/untitled-COVID-game-master
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 67.21 ms, found 3 plugins.
+>>>>>>> 7367344bd3efbe21416e1b09f6dbd74cb93ad265
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.2.2f1 (068178b99f32)
-[Subsystems] Discovering subsystems at path C:/Users/asus/Desktop/current_courses/game_design/unity_editors/2020.2.2f1/Editor/Data/Resources/UnitySubsystems
-[Subsystems] Discovering subsystems at path C:/Users/asus/Desktop/check/untitled-COVID-game/Assets
+[Subsystems] Discovering subsystems at path /Applications/Unity/Hub/Editor/2020.2.2f1/Unity.app/Contents/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path /Users/igor/Desktop/COMP3329/Group Project/untitled-COVID-game-master/Assets
 GfxDevice: creating device client; threaded=0
-Direct3D:
-    Version:  Direct3D 11.0 [level 11.1]
-    Renderer: Intel(R) HD Graphics 615 (ID=0x591e)
-    Vendor:   
-    VRAM:     1990 MB
-    Driver:   26.20.100.7325
+2021-04-27 15:54:04.511 Unity[5119:133879] Color LCD preferred device: Intel(R) UHD Graphics 630 (low power)
+2021-04-27 15:54:04.511 Unity[5119:133879] Metal devices available: 2
+2021-04-27 15:54:04.511 Unity[5119:133879] 0: AMD Radeon Pro 5300M (high power)
+2021-04-27 15:54:04.511 Unity[5119:133879] 1: Intel(R) UHD Graphics 630 (low power)
+2021-04-27 15:54:04.512 Unity[5119:133879] Using device AMD Radeon Pro 5300M (high power)
+Initializing Metal device caps: AMD Radeon Pro 5300M
 Initialize mono
+<<<<<<< HEAD
 Mono path[0] = 'C:/Users/asus/Desktop/current_courses/game_design/unity_editors/2020.2.2f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Users/asus/Desktop/current_courses/game_design/unity_editors/2020.2.2f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Users/asus/Desktop/current_courses/game_design/unity_editors/2020.2.2f1/Editor/Data/MonoBleedingEdge/etc'
@@ -42,11 +48,24 @@ Register platform support module: C:/Users/asus/Desktop/current_courses/game_des
 Registered in 0.006479 seconds.
 Native extension for WindowsStandalone target not found
 Refreshing native plugins compatible for Editor in 118.51 ms, found 1 plugins.
+=======
+Mono path[0] = '/Applications/Unity/Hub/Editor/2020.2.2f1/Unity.app/Contents/Managed'
+Mono path[1] = '/Applications/Unity/Hub/Editor/2020.2.2f1/Unity.app/Contents/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = '/Applications/Unity/Hub/Editor/2020.2.2f1/Unity.app/Contents/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56119
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: /Applications/Unity/Hub/Editor/2020.2.2f1/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
+Registered in 0.000441 seconds.
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 56.96 ms, found 3 plugins.
+>>>>>>> 7367344bd3efbe21416e1b09f6dbd74cb93ad265
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
+<<<<<<< HEAD
 - Completed reload, in  5.421 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
@@ -54,11 +73,21 @@ Registered in 0.007282 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
 Refreshing native plugins compatible for Editor in 115.74 ms, found 1 plugins.
+=======
+- Completed reload, in  1.684 seconds
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.002450 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 72.01 ms, found 3 plugins.
+>>>>>>> 7367344bd3efbe21416e1b09f6dbd74cb93ad265
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
+<<<<<<< HEAD
 - Completed reload, in  1.617 seconds
 Platform modules already initialized, skipping
 ========================================================================
@@ -503,5 +532,28 @@ Received Import Request.
   artifactKey: Guid(52d2aa3af090bfe4bbfa39f112aa08af) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/city background/background_tiles/pixel-art-city-background_40.asset using Guid(52d2aa3af090bfe4bbfa39f112aa08af) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c11cae9e297cd632abb12db539ce95ec') in 0.071436 seconds
   Import took 0.097603 seconds .
+=======
+- Completed reload, in  1.153 seconds
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launching external process: /Applications/Unity/Hub/Editor/2020.2.2f1/Unity.app/Contents/Tools/UnityShaderCompiler
+Launched and connected shader compiler UnityShaderCompiler after 0.01 seconds
+Refreshing native plugins compatible for Editor in 0.83 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2119 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 166.0 MB.
+System memory in use after: 166.1 MB.
+
+Unloading 42 unused Assets to reduce memory usage. Loaded Objects now: 2589.
+Total: 2.568606 ms (FindLiveObjects: 0.272643 ms CreateObjectMapping: 0.098104 ms MarkObjects: 2.069558 ms  DeleteObjects: 0.127273 ms)
+
+========================================================================
+Received Import Request.
+  path: Assets/Scenes/BeerBay.unity
+  artifactKey: Guid(6565c154d06514ee3be5c1e08bcdde1e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/BeerBay.unity using Guid(6565c154d06514ee3be5c1e08bcdde1e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '110442712a1ce4b1033c6a1d6ef92b79') in 0.015183 seconds
+  Import took 0.020060 seconds .
+>>>>>>> 7367344bd3efbe21416e1b09f6dbd74cb93ad265
 
 AssetImportWorkerClient::OnTransportError - code=2 error=End of file
