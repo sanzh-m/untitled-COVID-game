@@ -46,6 +46,7 @@
      <Compile Include="Assets\Scripts\MovingEnemy.cs" />
      <Compile Include="Assets\Scripts\Frog.cs" />
      <Compile Include="Assets\Scripts\Ladder.cs" />
+     <Compile Include="Assets\Scripts\CovidIndesctructible.cs" />
      <Compile Include="Assets\Scripts\Eagle.cs" />
      <Compile Include="Assets\Scripts\SceneChange.cs" />
      <Compile Include="Assets\CyberPunk\Scripts\Done_BGScroller.cs" />
