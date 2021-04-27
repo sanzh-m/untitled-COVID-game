@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8259315470303860628}
   - component: {fileID: 8259315470303860634}
   - component: {fileID: 8259315470303860635}
+  - component: {fileID: 7729820698236232947}
   m_Layer: 0
   m_Name: Mask
   m_TagString: Collectible
@@ -129,3 +130,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 31.25, y: 19.711494}
   m_EdgeRadius: 0
+--- !u!114 &7729820698236232947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8259315470303860631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c43ac939a4b8b4e5abeb5c3ccfefd0d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  counter: 0
+  counterText: {fileID: 0}

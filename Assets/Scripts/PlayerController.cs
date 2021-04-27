@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     private Collider2D coll;
 
     //Ladder variables
-   [HideInInspector] public bool canClimb = false;
+    [HideInInspector] public bool canClimb = false;
     [HideInInspector] public bool bottomLadder = false;
     [HideInInspector] public bool topLadder = false;
     public Ladder ladder;
@@ -26,11 +26,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask ground;
     [SerializeField] private float speed = 5f;
     [SerializeField] private float jumpForce = 10f;
-    [SerializeField] private int cherries = 0;
-    [SerializeField] private Text cherryText;
     [SerializeField] private float hurtForce = 10f;
     
-    [SerializeField] private AudioSource cherrySound;
+    [SerializeField] private AudioSource collectibleSound;
     [SerializeField] private AudioSource footstep;
 
     [SerializeField] private int health;
@@ -61,14 +59,12 @@ public class PlayerController : MonoBehaviour
         anim.SetInteger("state", (int) state);
     }
 
+    // Playing sound on collectible scripts size will result in issues
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Collectible")
         {
-            Destroy(collision.gameObject);
-            cherrySound.Play();
-            cherries++;
-            cherryText.text = cherries.ToString();
+            collectibleSound.Play();
         }
     }
 
@@ -80,67 +76,47 @@ public class PlayerController : MonoBehaviour
             Enemy enemy = other.gameObject.GetComponent<Enemy>();
             if (state == State.falling)
             {
-                // Destroy(other.gameObject);
-                bool result = enemy.JumpedOn();
-                if (result) {
-                    Jump();
-                } else {
-                HandleHealth();
-                if (other.gameObject.transform.position.x > transform.position.x)
-                {
-                    //Enemy is to my right -> damaged and shift left
-                    rb.velocity = new Vector2(-hurtForce, rb.velocity.y);
-                }
-                else
-                {
-                    //Enemy is to my left -> damaged and shift right
-                    rb.velocity = new Vector2(hurtForce, rb.velocity.y);
-                }
-                }
+                enemy.JumpedOn();
+                Jump();
+
             } 
             
             else 
             {
 
                 state = State.hurt;
-                HandleHealth();
-                if (other.gameObject.transform.position.x > transform.position.x)
-                {
-                    //Enemy is to my right -> damaged and shift left
-                    rb.velocity = new Vector2(-hurtForce, rb.velocity.y);
-                }
-                else
-                {
-                    //Enemy is to my left -> damaged and shift right
-                    rb.velocity = new Vector2(hurtForce, rb.velocity.y);
-                }
+                HandleDamage(other);
             }
         } else if (other.gameObject.tag == "IndestructibleEnemy")
         {
-            IndestructibleEnemy enemy = other.gameObject.GetComponent<IndestructibleEnemy>();
             state = State.hurt;
-            HandleHealth();
-            if (other.gameObject.transform.position.x > transform.position.x)
-            {
-                //Enemy is to my right -> damaged and shift left
-                rb.velocity = new Vector2(-hurtForce, rb.velocity.y);
-            }
-            else
-            {
-                //Enemy is to my left -> damaged and shift right
-                rb.velocity = new Vector2(hurtForce, rb.velocity.y);
-            }
+            HandleDamage(other);
         }   
+    }
+
+    private void HandleDamage(Collision2D other)
+    {
+        HandleHealth();
+        if (other.gameObject.transform.position.x > transform.position.x)
+        {
+            //Enemy is to my right -> damaged and shift left
+            rb.velocity = new Vector2(-hurtForce, rb.velocity.y);
+        }
+        else
+        {
+            //Enemy is to my left -> damaged and shift right
+            rb.velocity = new Vector2(hurtForce, rb.velocity.y);
+        }
     }
 
     private void HandleHealth()
     {
         health -= 1;
-                healthAmount.text = health.ToString();
-                if (health <= 0) 
-                {
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-                }
+        healthAmount.text = health.ToString();
+        if (health <= 0) 
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 
     private void Movement() 
