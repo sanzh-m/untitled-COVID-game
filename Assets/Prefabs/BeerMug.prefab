@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 8110706600281966290}
   - component: {fileID: 8110706600281966292}
   - component: {fileID: 8110706600281966295}
-  - component: {fileID: 3539070412348080474}
   m_Layer: 0
   m_Name: BeerMug
   m_TagString: Collectible
@@ -130,17 +129,3 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &3539070412348080474
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8110706600281966291}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c43ac939a4b8b4e5abeb5c3ccfefd0d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  counter: 0
-  counterText: {fileID: 0}
