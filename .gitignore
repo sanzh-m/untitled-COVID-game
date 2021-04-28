@@ -10,7 +10,9 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
-/Logs/
+Logs/
+UserSettings/
+UserSettings/
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
 /[Mm]emoryCaptures/
@@ -26,6 +28,11 @@
 Assembly-CSharp.csproj
 # Visual Studio cache directory
 .vs/
+/.vscode/
+.vscode/
+.idea/
+/.idea/
+.vsconfig
 
 # Gradle cache directory
 .gradle/

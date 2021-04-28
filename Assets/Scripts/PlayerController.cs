@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
 {
 
     private Rigidbody2D rb;
-    private enum State {idle, running, jumping, falling, hurt, climb};
+    private enum State { idle, running, jumping, falling, hurt, climb };
     private State state = State.idle;
     private Collider2D coll;
 
@@ -28,14 +28,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speed = 5f;
     [SerializeField] private float jumpForce = 10f;
     [SerializeField] private float hurtForce = 10f;
-    
+
     [SerializeField] private AudioSource collectibleSound;
     [SerializeField] private AudioSource footstep;
 
     [SerializeField] private int health;
     [SerializeField] private TextMeshProUGUI healthAmount;
 
-    protected void Start() 
+    protected void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
@@ -45,19 +45,21 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    private void Update() {
+    private void Update()
+    {
 
         if (state == State.climb)
         {
             Climb();
         }
 
-        else if (state != State.hurt) {
+        else if (state != State.hurt)
+        {
             Movement();
         }
 
         AnimationState();
-        anim.SetInteger("state", (int) state);
+        anim.SetInteger("state", (int)state);
     }
 
     // Playing sound on collectible scripts size will result in issues
@@ -80,29 +82,29 @@ public class PlayerController : MonoBehaviour
                 enemy.JumpedOn();
                 Jump();
 
-            } 
-            
-            else 
+            }
+
+            else
             {
 
                 state = State.hurt;
                 HandleDamage(other);
             }
-        } 
-        
+        }
+
         else if (other.gameObject.tag == "IndestructibleEnemy")
 
         {
             state = State.hurt;
             HandleDamage(other);
-        }   
+        }
 
         else if (other.gameObject.tag == "Virus")
 
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
-        
+
     }
 
     private void HandleDamage(Collision2D other)
@@ -124,13 +126,13 @@ public class PlayerController : MonoBehaviour
     {
         health -= 1;
         healthAmount.text = health.ToString();
-        if (health <= 0) 
+        if (health <= 0)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 
-    private void Movement() 
+    private void Movement()
     {
         float hDirection = Input.GetAxis("Horizontal");
 
@@ -142,13 +144,13 @@ public class PlayerController : MonoBehaviour
             rb.gravityScale = 0f;
         }
 
-        if (hDirection < 0) 
+        if (hDirection < 0)
         {
             rb.velocity = new Vector2(-speed, rb.velocity.y);
             gameObject.GetComponent<SpriteRenderer>().flipX = true;
-        } 
+        }
 
-        else if (hDirection > 0) 
+        else if (hDirection > 0)
         {
             rb.velocity = new Vector2(speed, rb.velocity.y);
             gameObject.GetComponent<SpriteRenderer>().flipX = false;
@@ -160,10 +162,10 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(0, rb.velocity.y);
         }
 
-        
-        if (Input.GetButtonDown("Jump") && coll.IsTouchingLayers(ground)) 
+
+        if (Input.GetButtonDown("Jump") && coll.IsTouchingLayers(ground))
         {
-      
+
             Jump();
         }
     }
@@ -177,16 +179,16 @@ public class PlayerController : MonoBehaviour
     private void Climb()
     {
 
-        if (Input.GetButtonDown("Jump")) 
+        if (Input.GetButtonDown("Jump"))
         {
-            rb.constraints =  RigidbodyConstraints2D.FreezeRotation;
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
             canClimb = false;
             rb.gravityScale = naturalGravity;
             anim.speed = 1f;
             Jump();
             return;
         }
-    
+
         float vDriection = Input.GetAxis("Vertical");
 
         if (vDriection > .1f && !topLadder)
@@ -215,14 +217,11 @@ public class PlayerController : MonoBehaviour
 
         if (state == State.climb)
         {
-            
+
         }
-        else if (state == State.jumping)
+        else if (rb.velocity.y < -.1f)
         {
-            if (rb.velocity.y < .1f)
-            {
-                state = State.falling;
-            } 
+            state = State.falling;
         }
 
         else if (state == State.falling)
@@ -233,7 +232,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        else if (state ==  State.hurt)
+        else if (state == State.hurt)
         {
             if (Mathf.Abs(rb.velocity.x) < .1f)
             {
@@ -248,11 +247,11 @@ public class PlayerController : MonoBehaviour
 
         }
 
-        else 
+        else
         {
             state = State.idle;
         }
-        
+
     }
 
     private void Footstep()
