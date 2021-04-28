@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7892169981012529189}
   - component: {fileID: 861463700397418658}
   - component: {fileID: -6340770231897231548}
-  - component: {fileID: -8072057089110085031}
   m_Layer: 0
   m_Name: Hospital
   m_TagString: Untagged
@@ -70,10 +69,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -277109251
-  m_SortingLayer: 2
+  m_SortingLayerID: 1687229885
+  m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fbc4bd477ea155d419fc21d58e557cea, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 122a39284def8ff44a04b461eb76d8e4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -94,7 +93,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -110,16 +109,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.41, y: 2.41}
   m_EdgeRadius: 0
---- !u!114 &-8072057089110085031
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6795520612917667364}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce99917757470456eb4ee0df37c6029b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneName: TheEnd
