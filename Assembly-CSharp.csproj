@@ -46,14 +46,13 @@
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\IndestructibleEnemy.cs" />
      <Compile Include="Assets\Scripts\MovingEnemy.cs" />
-     <Compile Include="Assets\Scripts\Frog.cs" />
      <Compile Include="Assets\Scripts\Virus.cs" />
      <Compile Include="Assets\Scripts\Ladder.cs" />
      <Compile Include="Assets\Scripts\coughScript.cs" />
-     <Compile Include="Assets\Scripts\CovidIndesctructible.cs" />
      <Compile Include="Assets\Scripts\Eagle.cs" />
      <Compile Include="Assets\Scripts\SceneChange.cs" />
      <Compile Include="Assets\CyberPunk\Scripts\Done_BGScroller.cs" />
+     <Compile Include="Assets\Scripts\CollectiblesScript.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
