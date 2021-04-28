@@ -35,6 +35,7 @@ Assembly-CSharp-Editor-firstpass.csproj
 /.idea/
 .vsconfig
 .DS_Store
+settings.json
 
 # Gradle cache directory
 .gradle/
