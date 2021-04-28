@@ -87,11 +87,21 @@ public class PlayerController : MonoBehaviour
                 state = State.hurt;
                 HandleDamage(other);
             }
-        } else if (other.gameObject.tag == "IndestructibleEnemy")
+        } 
+        
+        else if (other.gameObject.tag == "IndestructibleEnemy")
+
         {
             state = State.hurt;
             HandleDamage(other);
         }   
+
+        else if (other.gameObject.tag == "Virus")
+
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+        
     }
 
     private void HandleDamage(Collision2D other)
