@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8182842539371784628}
   - component: {fileID: 8182842539371784629}
   - component: {fileID: 8182842539371784630}
+  - component: {fileID: 2057051248}
   m_Layer: 0
   m_Name: BeerPint
   m_TagString: Collectible
@@ -129,3 +130,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2057051248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8182842539371784626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c43ac939a4b8b4e5abeb5c3ccfefd0d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  counter: 0
+  counterText: {fileID: 0}
