@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -32,7 +33,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AudioSource footstep;
 
     [SerializeField] private int health;
-    [SerializeField] private Text healthAmount;
+    [SerializeField] private TextMeshProUGUI healthAmount;
 
     protected void Start() 
     {

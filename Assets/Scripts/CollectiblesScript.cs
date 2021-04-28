@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class CollectiblesScript : MonoBehaviour
 {
 
-    [SerializeField] private int counter = 0;
-    [SerializeField] private Text counterText;
+    [SerializeField] private TextMeshProUGUI counterText;
 
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -15,8 +15,7 @@ public class CollectiblesScript : MonoBehaviour
         if (collision.tag == "Player")
         {
             Destroy(gameObject);
-            counter++;
-            counterText.text = counter.ToString();
+            counterText.text = (int.Parse(counterText.text) + 1).ToString();
             
         }
     }
