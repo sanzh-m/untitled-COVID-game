@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour
             Enemy enemy = other.gameObject.GetComponent<Enemy>();
             if (state == State.falling)
             {
-                enemy.JumpedOn();
+                enemy.KillEnemy();
                 Jump();
 
             }
