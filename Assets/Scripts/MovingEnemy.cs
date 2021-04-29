@@ -11,8 +11,6 @@ public class MovingEnemy : Enemy
 
     [SerializeField] private float moveLength;
 
-    [SerializeField] private float jumpHeight;
-
     [SerializeField] private LayerMask ground;
 
     private Collider2D coll;
