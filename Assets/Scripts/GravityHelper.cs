@@ -8,7 +8,10 @@ public class GravityHelper : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            collision.gameObject.GetComponent<PlayerController>().enabled = false;
+            // collision.gameObject.GetComponent<PlayerController>().enabled = false;
+            // collision.gameObject.GetComponent<PlayerController>().enabled = false;
+            PlayerController pc = collision.gameObject.GetComponent<PlayerController>();
+            pc.Fall();
         }
     }
 }
