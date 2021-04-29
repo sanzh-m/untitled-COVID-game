@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - IndestructibleEnemy
   - Virus
+  - IndestructibleEnemy
+  - CollectibleCount
   layers:
   - Default
   - TransparentFX
