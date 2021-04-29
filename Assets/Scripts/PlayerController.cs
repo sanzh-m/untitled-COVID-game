@@ -148,9 +148,9 @@ public class PlayerController : MonoBehaviour
 
     private void Movement()
     {
-        float hDirection = Input.GetAxis("Horizontal");
+        float hDirection = Input.GetAxisRaw("Horizontal");
 
-        if (canClimb && Mathf.Abs(Input.GetAxis("Vertical")) > .1f)
+        if (canClimb && Mathf.Abs(Input.GetAxisRaw("Vertical")) > .1f)
         {
             state = State.climb;
             rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
@@ -170,11 +170,11 @@ public class PlayerController : MonoBehaviour
             gameObject.GetComponent<SpriteRenderer>().flipX = false;
         }
 
-        // Prevent sliding effect once user releases the key
-        if (Input.GetButtonUp("Horizontal"))
-        {
-            rb.velocity = new Vector2(0, rb.velocity.y);
-        }
+        // // Prevent sliding effect once user releases the key
+        // if (Input.GetButtonUp("Horizontal"))
+        // {
+        //     rb.velocity = new Vector2(0, rb.velocity.y);
+        // }
 
 
         if (Input.GetButtonDown("Jump") && coll.IsTouchingLayers(ground))
