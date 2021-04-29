@@ -44,6 +44,11 @@ public class PlayerController : MonoBehaviour
         naturalGravity = rb.gravityScale;
     }
 
+    public void Fall()
+    {
+        state = State.falling;
+    }
+
 
     private void Update()
     {
