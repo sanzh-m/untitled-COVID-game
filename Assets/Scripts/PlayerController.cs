@@ -71,6 +71,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnParticleCollision(GameObject other)
+    {
+        if (other.tag == "Enemy")
+        {
+            state = State.hurt;
+            HandleDamage(other);
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.tag == "Enemy")
@@ -88,7 +97,7 @@ public class PlayerController : MonoBehaviour
             {
 
                 state = State.hurt;
-                HandleDamage(other);
+                HandleDamage(other.gameObject);
             }
         }
 
@@ -96,7 +105,7 @@ public class PlayerController : MonoBehaviour
 
         {
             state = State.hurt;
-            HandleDamage(other);
+            HandleDamage(other.gameObject);
         }
 
         else if (other.gameObject.tag == "Virus")
@@ -107,10 +116,10 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void HandleDamage(Collision2D other)
+    private void HandleDamage(GameObject other)
     {
         HandleHealth();
-        if (other.gameObject.transform.position.x > transform.position.x)
+        if (other.transform.position.x > transform.position.x)
         {
             //Enemy is to my right -> damaged and shift left
             rb.velocity = new Vector2(-hurtForce, rb.velocity.y);

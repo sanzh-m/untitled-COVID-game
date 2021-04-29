@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 6065236303441109649}
   - component: {fileID: 6065236303441109645}
   - component: {fileID: 6065236303441109642}
+  - component: {fileID: -1419323238364427284}
   m_Layer: 0
   m_Name: drunk
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -166,3 +167,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   virusEffect: {fileID: 3058167210117159283, guid: 1db4eba413f4a8f4b80f34c405da6f25, type: 3}
   repeatTime: 4
+--- !u!114 &-1419323238364427284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6115417202929981553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 629224c17a0eb481f953b8493bd9e2ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
