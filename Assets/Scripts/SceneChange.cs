@@ -36,8 +36,15 @@ public class SceneChange : MonoBehaviour
                     satisfied = false;
                 }
             }
-            EditorUtility.DisplayDialog(satisfied.ToString(), "Place", "Do Not Place");
-            // SceneManager.LoadScene(sceneName);
+            if (satisfied)
+            {
+            bool result = EditorUtility.DisplayDialog(satisfied.ToString(), "Next Level?", "Yes", "No");
+            if (result)
+            {
+               SceneManager.LoadScene(sceneName); 
+            }
+            }
+            
         }
     }
 }

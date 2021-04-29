@@ -170,12 +170,6 @@ public class PlayerController : MonoBehaviour
             gameObject.GetComponent<SpriteRenderer>().flipX = false;
         }
 
-        // // Prevent sliding effect once user releases the key
-        // if (Input.GetButtonUp("Horizontal"))
-        // {
-        //     rb.velocity = new Vector2(0, rb.velocity.y);
-        // }
-
 
         if (Input.GetButtonDown("Jump") && coll.IsTouchingLayers(ground))
         {
