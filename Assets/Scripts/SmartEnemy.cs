@@ -9,6 +9,7 @@ public class SmartEnemy : IndestructibleEnemy
     public Transform target;
     public float speed = 300f;
     public float nextWaypointDistance = .5f;
+    public float maxSpeed = 10f;
 
     Path path;
     int currentWaypoint = 0;
@@ -63,14 +64,14 @@ public class SmartEnemy : IndestructibleEnemy
             reachedEndOfPath = false;
         }
 
-        Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-        Vector2 force = direction * speed * Time.deltaTime;
-
-        rb.AddForce(force);
-
-        if ((force.x >= 0.01f && transform.localScale.x <= -0.01f) || (force.x <= -0.01f && transform.localScale.x >= 0.01f))
-        {
-            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+        if (rb.velocity.magnitude < maxSpeed){
+            Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
+            Vector2 force = direction * speed * Time.deltaTime;
+            rb.AddForce(force);
+            if ((force.x >= 0.01f && transform.localScale.x <= -0.01f) || (force.x <= -0.01f && transform.localScale.x >= 0.01f))
+            {
+                transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+            }
         }
 
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
