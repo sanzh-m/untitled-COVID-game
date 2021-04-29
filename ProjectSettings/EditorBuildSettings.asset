@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Wellcome.unity
     guid: 3a3a0f2dc4d11420a914f9d1e61561e9
   - enabled: 1
+    path: Assets/Scenes/SecondScene.unity
+    guid: 1a20874487cec4cd2a9bf7e9b34e2afc
+  - enabled: 1
     path: Assets/Scenes/DanceGym.unity
     guid: f8af35b06b3800d48bf52438d8e5d85f
   - enabled: 1

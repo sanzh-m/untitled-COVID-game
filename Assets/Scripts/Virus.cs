@@ -6,8 +6,8 @@ public class Virus : MonoBehaviour
 {
     Vector3 _startingPos;
     Transform _trans;
-    float maxMoveDistance = 10;
-    float speed = 4;
+    public float maxMoveDistance = 10;
+    public float speed = 4;
     bool down;
 
     // Start is called before the first frame update

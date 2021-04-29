@@ -1,4 +1,3 @@
-
 # This .gitignore file should be placed at the root of your Unity project directory
 #
 # Get latest from https://github.com/github/gitignore/blob/master/Unity.gitignore
@@ -34,6 +33,8 @@ Assembly-CSharp-Editor-firstpass.csproj
 .idea/
 /.idea/
 .vsconfig
+.DS_Store
+settings.json
 
 # Gradle cache directory
 .gradle/
