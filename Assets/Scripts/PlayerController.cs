@@ -78,7 +78,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
-        if (other.tag == "Enemy")
+        if (other.tag == "Enemy" || other.CompareTag("IndestructibleEnemy"))
         {
             state = State.hurt;
             HandleDamage(other);
@@ -106,7 +106,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        else if (other.gameObject.tag == "IndestructibleEnemy")
+        else if (other.gameObject.CompareTag("IndestructibleEnemy"))
 
         {
             state = State.hurt;
