@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -107,7 +108,6 @@ public class PlayerController : MonoBehaviour
         }
 
         else if (other.gameObject.CompareTag("IndestructibleEnemy"))
-
         {
             state = State.hurt;
             HandleDamage(other.gameObject);
@@ -124,16 +124,9 @@ public class PlayerController : MonoBehaviour
     private void HandleDamage(GameObject other)
     {
         HandleHealth();
-        if (other.transform.position.x > transform.position.x)
-        {
-            //Enemy is to my right -> damaged and shift left
-            rb.velocity = new Vector2(-hurtForce, rb.velocity.y);
-        }
-        else
-        {
-            //Enemy is to my left -> damaged and shift right
-            rb.velocity = new Vector2(hurtForce, rb.velocity.y);
-        }
+        Vector2 hurtVector = transform.position - other.transform.position;
+        var componentsSum = Math.Abs(hurtVector.x) + Math.Abs(hurtVector.y);
+        rb.velocity = new Vector2(hurtForce * hurtVector.x / componentsSum, hurtForce * hurtVector.y / componentsSum);
     }
 
     private void HandleHealth()
