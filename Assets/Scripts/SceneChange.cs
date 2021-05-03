@@ -7,7 +7,6 @@ using UnityEditor;
 
 public class SceneChange : MonoBehaviour
 {
-
     [SerializeField] private string sceneName;
     public int[] counts;
     public TextMeshProUGUI[] counters;
@@ -30,14 +29,25 @@ public class SceneChange : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             var satisfied = true;
-            for (int i = 0; i < counts.Length; ++i) {
+            for (int i = 0; i < counts.Length; ++i)
+            {
                 if (counts[i] > int.Parse(counters[i].text))
                 {
                     satisfied = false;
                 }
             }
-            EditorUtility.DisplayDialog(satisfied.ToString(), "Place", "Do Not Place");
-            // SceneManager.LoadScene(sceneName);
+
+            var title = satisfied
+                ? "Congrats!"
+                : "Almost there";
+            var body = satisfied
+                ? "Congratulations on finishing the level!"
+                : "Well done for reaching here, but you don't have enough items collected";
+            var button = satisfied
+                ? "Move to the next scene!"
+                : "Ok";
+            EditorUtility.DisplayDialog(title, body, button);
+            if (satisfied) SceneManager.LoadScene(sceneName);
         }
     }
 }
