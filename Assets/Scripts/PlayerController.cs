@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -44,6 +45,11 @@ public class PlayerController : MonoBehaviour
         naturalGravity = rb.gravityScale;
     }
 
+    public void Fall()
+    {
+        state = State.falling;
+    }
+
 
     private void Update()
     {
@@ -73,7 +79,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
-        if (other.tag == "Enemy")
+        if (other.tag == "Enemy" || other.CompareTag("IndestructibleEnemy"))
         {
             state = State.hurt;
             HandleDamage(other);
@@ -101,8 +107,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        else if (other.gameObject.tag == "IndestructibleEnemy")
-
+        else if (other.gameObject.CompareTag("IndestructibleEnemy"))
         {
             state = State.hurt;
             HandleDamage(other.gameObject);
@@ -119,16 +124,9 @@ public class PlayerController : MonoBehaviour
     private void HandleDamage(GameObject other)
     {
         HandleHealth();
-        if (other.transform.position.x > transform.position.x)
-        {
-            //Enemy is to my right -> damaged and shift left
-            rb.velocity = new Vector2(-hurtForce, rb.velocity.y);
-        }
-        else
-        {
-            //Enemy is to my left -> damaged and shift right
-            rb.velocity = new Vector2(hurtForce, rb.velocity.y);
-        }
+        Vector2 hurtVector = transform.position - other.transform.position;
+        var componentsSum = Math.Abs(hurtVector.x) + Math.Abs(hurtVector.y);
+        rb.velocity = new Vector2(hurtForce * hurtVector.x / componentsSum, hurtForce * hurtVector.y / componentsSum);
     }
 
     private void HandleHealth()
@@ -143,9 +141,9 @@ public class PlayerController : MonoBehaviour
 
     private void Movement()
     {
-        float hDirection = Input.GetAxis("Horizontal");
+        float hDirection = Input.GetAxisRaw("Horizontal");
 
-        if (canClimb && Mathf.Abs(Input.GetAxis("Vertical")) > .1f)
+        if (canClimb && Mathf.Abs(Input.GetAxisRaw("Vertical")) > .1f)
         {
             state = State.climb;
             rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
@@ -165,11 +163,11 @@ public class PlayerController : MonoBehaviour
             gameObject.GetComponent<SpriteRenderer>().flipX = false;
         }
 
-        // Prevent sliding effect once user releases the key
-        if (Input.GetButtonUp("Horizontal"))
-        {
-            rb.velocity = new Vector2(0, rb.velocity.y);
-        }
+        // // Prevent sliding effect once user releases the key
+        // if (Input.GetButtonUp("Horizontal"))
+        // {
+        //     rb.velocity = new Vector2(0, rb.velocity.y);
+        // }
 
 
         if (Input.GetButtonDown("Jump") && coll.IsTouchingLayers(ground))
