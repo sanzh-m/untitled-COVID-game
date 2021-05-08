@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -34,6 +35,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private int health;
     [SerializeField] private TextMeshProUGUI healthAmount;
+    [SerializeField] private GameObject gameOverUI;
 
     protected void Start()
     {
@@ -78,7 +80,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
-        if (other.tag == "Enemy")
+        if (other.tag == "Enemy" || other.CompareTag("IndestructibleEnemy"))
         {
             state = State.hurt;
             HandleDamage(other);
@@ -106,8 +108,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        else if (other.gameObject.tag == "IndestructibleEnemy")
-
+        else if (other.gameObject.CompareTag("IndestructibleEnemy"))
         {
             state = State.hurt;
             HandleDamage(other.gameObject);
@@ -116,7 +117,8 @@ public class PlayerController : MonoBehaviour
         else if (other.gameObject.tag == "Virus")
 
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            gameOverUI.SetActive(true);
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
     }
@@ -124,16 +126,9 @@ public class PlayerController : MonoBehaviour
     private void HandleDamage(GameObject other)
     {
         HandleHealth();
-        if (other.transform.position.x > transform.position.x)
-        {
-            //Enemy is to my right -> damaged and shift left
-            rb.velocity = new Vector2(-hurtForce, rb.velocity.y);
-        }
-        else
-        {
-            //Enemy is to my left -> damaged and shift right
-            rb.velocity = new Vector2(hurtForce, rb.velocity.y);
-        }
+        Vector2 hurtVector = transform.position - other.transform.position;
+        var componentsSum = Math.Abs(hurtVector.x) + Math.Abs(hurtVector.y);
+        rb.velocity = new Vector2(hurtForce * hurtVector.x / componentsSum, hurtForce * hurtVector.y / componentsSum);
     }
 
     private void HandleHealth()
@@ -142,7 +137,8 @@ public class PlayerController : MonoBehaviour
         healthAmount.text = health.ToString();
         if (health <= 0)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            gameOverUI.SetActive(true);
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 
@@ -191,7 +187,7 @@ public class PlayerController : MonoBehaviour
         {
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
             canClimb = false;
-            rb.gravityScale = naturalGravity;
+            rb.gravityScale = 7.0f;
             anim.speed = 1f;
             Jump();
             return;
