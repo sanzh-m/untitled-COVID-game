@@ -118,6 +118,7 @@ public class PlayerController : MonoBehaviour
 
         {
             gameOverUI.SetActive(true);
+            Time.timeScale = 0f;
         }
 
     }
@@ -137,6 +138,7 @@ public class PlayerController : MonoBehaviour
         if (health <= 0)
         {
             gameOverUI.SetActive(true);
+            Time.timeScale = 0f;
         }
     }
 
