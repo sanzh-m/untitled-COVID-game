@@ -118,7 +118,6 @@ public class PlayerController : MonoBehaviour
 
         {
             gameOverUI.SetActive(true);
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
     }
@@ -138,7 +137,6 @@ public class PlayerController : MonoBehaviour
         if (health <= 0)
         {
             gameOverUI.SetActive(true);
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 
@@ -166,17 +164,12 @@ public class PlayerController : MonoBehaviour
             gameObject.GetComponent<SpriteRenderer>().flipX = false;
         }
 
-        // // Prevent sliding effect once user releases the key
-        // if (Input.GetButtonUp("Horizontal"))
-        // {
-        //     rb.velocity = new Vector2(0, rb.velocity.y);
-        // }
 
-
-        if (Input.GetButtonDown("Jump") && coll.IsTouchingLayers(ground))
+        if (Input.GetButtonDown("Jump"))
         {
-
-            Jump();
+            RaycastHit2D hit = Physics2D.Raycast(rb.position, Vector2.down, 1.3f, ground);
+            if(hit.collider != null)
+                Jump();
         }
     }
 
