@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private int health;
     [SerializeField] private TextMeshProUGUI healthAmount;
+    [SerializeField] private GameObject gameOverUI;
 
     protected void Start()
     {
@@ -116,7 +117,8 @@ public class PlayerController : MonoBehaviour
         else if (other.gameObject.tag == "Virus")
 
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            gameOverUI.SetActive(true);
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
     }
@@ -135,7 +137,8 @@ public class PlayerController : MonoBehaviour
         healthAmount.text = health.ToString();
         if (health <= 0)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            gameOverUI.SetActive(true);
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 
@@ -163,12 +166,6 @@ public class PlayerController : MonoBehaviour
             gameObject.GetComponent<SpriteRenderer>().flipX = false;
         }
 
-        // // Prevent sliding effect once user releases the key
-        // if (Input.GetButtonUp("Horizontal"))
-        // {
-        //     rb.velocity = new Vector2(0, rb.velocity.y);
-        // }
-
 
         if (Input.GetButtonDown("Jump") && coll.IsTouchingLayers(ground))
         {
@@ -190,7 +187,7 @@ public class PlayerController : MonoBehaviour
         {
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
             canClimb = false;
-            rb.gravityScale = naturalGravity;
+            rb.gravityScale = 7.0f;
             anim.speed = 1f;
             Jump();
             return;
