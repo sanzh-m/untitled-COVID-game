@@ -13,11 +13,9 @@ public class SmartEnemy : IndestructibleEnemy
 
     Path path;
     int currentWaypoint = 0;
-    bool reachedEndOfPath = false;
     bool discoveredTarget = false;
 
     Seeker seeker;
-    private Collider2D coll;
     private bool facingLeft;
     private Transform transform;
 
@@ -25,7 +23,6 @@ public class SmartEnemy : IndestructibleEnemy
     protected override void Start()
     {
         base.Start();
-        coll = GetComponent<Collider2D>();
         seeker = GetComponent<Seeker>();
         transform = GetComponent<Transform>();
         if (transform.localScale.x >= 0f) facingLeft = false;
@@ -55,22 +52,13 @@ public class SmartEnemy : IndestructibleEnemy
             return;
         }
 
-        if (currentWaypoint >= path.vectorPath.Count)
-        {
-            reachedEndOfPath = true;
-            return;
-        } else
-        {
-            reachedEndOfPath = false;
-        }
-
         if (rb.velocity.magnitude < maxSpeed){
             Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-            Vector2 force = direction * speed * Time.deltaTime;
+            Vector2 force = direction * (speed * Time.deltaTime);
             rb.AddForce(force);
             if ((force.x >= 0.01f && transform.localScale.x <= -0.01f) || (force.x <= -0.01f && transform.localScale.x >= 0.01f))
             {
-                transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+                transform.localScale.Set(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
             }
         }
 
@@ -91,11 +79,4 @@ public class SmartEnemy : IndestructibleEnemy
             currentWaypoint = 0;
         }
     }
-
-
-    private void Move()
-    {
-        
-    }
-
 }
