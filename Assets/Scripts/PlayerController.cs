@@ -167,10 +167,8 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && Mathf.Abs(rb.velocity.y) < .01f)
         {
-            RaycastHit2D hit = Physics2D.Raycast(rb.position, Vector2.down, 1.3f, ground);
-            if(hit.collider != null)
                 Jump();
         }
     }
