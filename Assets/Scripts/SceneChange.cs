@@ -41,13 +41,14 @@ public class SceneChange : MonoBehaviour
             }
 
             levelEndDialog.SetActive(true);
-            var body = levelEndDialog.GetComponentInChildren<Text>();
+            var body = levelEndDialog.GetComponentInChildren<Text>(true);
             var buttons = levelEndDialog.GetComponentsInChildren<Button>(true);
             Debug.Log(buttons);
-            if (body == null || body.name != "BodyText" || buttons == null || buttons.Length != 2 ||
-                buttons[0].name != "ContinueButton" ||
-                buttons[1].name != "OkButton") throw new Exception("Level End Dialog is misconfigured");
-            
+            Debug.Log(body);
+            //if (body == null || body.name != "BodyText" || buttons == null || buttons.Length != 2 ||
+             //   buttons[0].name != "ContinueButton" ||
+              //  buttons[1].name != "OkButton") throw new Exception("Level End Dialog is misconfigured");
+
             if (satisfied) buttons[0].gameObject.SetActive(true);
             else buttons[1].gameObject.SetActive(true);
             body.text = satisfied
