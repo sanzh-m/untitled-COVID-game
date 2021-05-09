@@ -7,6 +7,7 @@ public class PauseMenu : MonoBehaviour
 {
     public static bool GameIsPaused = false;
     public GameObject pauseMenuUI;
+    public GameObject levelFinishedUI;
 
     void Start()
     {
@@ -15,7 +16,7 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (!levelFinishedUI.gameObject.activeSelf && Input.GetKeyDown(KeyCode.Escape))
         {
             if (GameIsPaused)
             {
