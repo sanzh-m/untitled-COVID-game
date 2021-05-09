@@ -5,9 +5,6 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: b457bfa75146340408ad8aa4263a9394
@@ -15,8 +12,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Wellcome.unity
     guid: 3a3a0f2dc4d11420a914f9d1e61561e9
   - enabled: 1
-    path: Assets/Scenes/SecondScene.unity
-    guid: 1a20874487cec4cd2a9bf7e9b34e2afc
+    path: Assets/Scenes/Pharmacy.unity
+    guid: 6b5f20c7e6c84d94abf91d65223071b0
   - enabled: 1
     path: Assets/Scenes/DanceGym.unity
     guid: f8af35b06b3800d48bf52438d8e5d85f
@@ -26,9 +23,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Hospital.unity
     guid: 6f6d170e6742c7e4abc4beae33b8107b
-  - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/TheEnd.unity
     guid: fdb0454048542466b8c10540d041260e
