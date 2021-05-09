@@ -13,6 +13,7 @@ public class LevelBottom : MonoBehaviour
         {
             //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             gameOverUI.SetActive(true);
+            Time.timeScale = 0f;
         } else if (collision.gameObject.tag == "Enemy")
         {
             Enemy enemy = collision.gameObject.GetComponent<Enemy>();
