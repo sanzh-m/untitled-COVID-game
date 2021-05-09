@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,8 +12,8 @@ public class SceneChange : MonoBehaviour
     [SerializeField] private string sceneName;
     public int[] counts;
     public TextMeshProUGUI[] counters;
-
     public TextMeshProUGUI[] requirementDisplayers;
+    public string[] requirementNames;
 
     // Start is called before the first frame update
     void Start()
@@ -29,11 +31,13 @@ public class SceneChange : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             var satisfied = true;
+            var unsatisfied = new ArrayList();
             for (int i = 0; i < counts.Length; ++i)
             {
                 if (counts[i] > int.Parse(counters[i].text))
                 {
                     satisfied = false;
+                    unsatisfied.Add(requirementNames[i]);
                 }
             }
 
@@ -42,7 +46,7 @@ public class SceneChange : MonoBehaviour
                 : "Almost there";
             var body = satisfied
                 ? "Congratulations on finishing the level!"
-                : "Well done for reaching here, but you don't have enough items collected";
+                : "Well done for reaching here, but you don't have enough items collected. You need to collect some " + string.Join(", ", unsatisfied.GetRange(0, unsatisfied.Count - 1).Cast<string>()) + " and " + (string)unsatisfied[unsatisfied.Count - 1] + ". Come back when you are done!2";
             var button = satisfied
                 ? "Move to the next scene!"
                 : "Ok";
